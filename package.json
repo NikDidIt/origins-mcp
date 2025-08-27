@@ -1,0 +1,20 @@
+{
+  "name": "origins-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server to get information from around my house.",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node src/builder.js && node src/tests.js",
+    "inspect" : "npx @modelcontextprotocol/inspector",
+    "start": "node src/builder.js && node src/index.js",
+    "run": "node src/index.js",
+    "build": "node src/builder.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.4",
+    "express": "^5.1.0"
+  }
+}
