@@ -1,6 +1,19 @@
 # Origins-MCP
 Collection of stuff around my house that I can pull information from. 
 
+Current connectivity includes
+* Home Assiastant
+  * inside_home_temperature.js
+  * outside_home_temperature.js
+  * plex_watching.js
+* PiHole
+  * pihole_find_by_ip.js
+
+Other
+* tar1090
+  * tar1090_lookup_closest_plane.js 
+
+
 ## Requirments
 Latest version of Node.js and NPM.
 
@@ -26,3 +39,4 @@ Edit your mcp.json file and add
     "origin-api": {
       "url": "http://localhost:3636/origins-mcp"
     }
+
