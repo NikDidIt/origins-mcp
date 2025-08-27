@@ -24,5 +24,5 @@ To use run ````npm run inspect````
 Edit your mcp.json file and add
 
     "origin-api": {
-      "url": "http://localhost:3636/origin-mcp"
+      "url": "http://localhost:3636/origins-mcp"
     }

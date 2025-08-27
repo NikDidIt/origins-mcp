@@ -17,7 +17,7 @@ app.use(express.json());
 
 function getServer() {
     const server = new McpServer({
-        name: "origin-mcp",
+        name: "origins-mcp",
         version: "1.0.0",
         capabilities: {
             resources: {},
@@ -39,7 +39,7 @@ function getServer() {
 }
 
 //From example code online
-app.post('/origin-mcp', async (req, res) => {
+app.post('/origins-mcp', async (req, res) => {
     try {
         const server = getServer(); 
         const transport = new StreamableHTTPServerTransport({
@@ -68,7 +68,7 @@ app.post('/origin-mcp', async (req, res) => {
 });
 
 // SSE notifications not supported in stateless mode
-app.get('/origin-mcp', async (req, res) => {
+app.get('/origins-mcp', async (req, res) => {
     console.log('Received GET MCP request');
     res.writeHead(405).end(JSON.stringify({
         jsonrpc: "2.0",
@@ -81,7 +81,7 @@ app.get('/origin-mcp', async (req, res) => {
 });
 
 // Session termination not needed in stateless mode
-app.delete('/origin-mcp', async (req, res) => {
+app.delete('/origins-mcp', async (req, res) => {
     console.log('Received DELETE MCP request');
     res.writeHead(405).end(JSON.stringify({
         jsonrpc: "2.0",
