@@ -1,9 +1,10 @@
 //Tool for getting Home Assistant information on outside Temperature
-const SENSOR_OUT_HOME_TEMP = process.env.HAAPI_SENSOR_OUT_HOME_TEMP || "weather.forecast_home"
 
 import { TOOL } from '../tool.js';
 import { HAAPI } from "./connections/ha-api/ha-api.js";
-//import { z } from "zod";
+
+const SENSOR_OUT_HOME_TEMP = process.env.HAAPI_SENSOR_OUT_HOME_TEMP || "";
+const haapi = new HAAPI();
 
 const name = "outside_home_temperature";
 
@@ -13,7 +14,6 @@ const params = {};
 
 async function outside_home_temperature() {
     //console.log("---- IN inside_home_temperature FUNCTION ---- ");
-    const haapi = new HAAPI();
     const retObj = { content: []};
     const content = {};
     try {
@@ -40,4 +40,4 @@ async function testFunction() {
     console.log(await outside_home_temperature());
 }
 
-//testFunction();
+if (!haapi.shouldInclude() || SENSOR_OUT_HOME_TEMP.length == 0) tool.exclude();

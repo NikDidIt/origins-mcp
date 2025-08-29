@@ -1,10 +1,10 @@
 //Tool for Home Assistant information on items currently being watched on plex
-const PLEX_ENTITY_ID_LOOKUP = process.env.HAAPI_PLEX_ENTITY_ID_LOOKUP || "media_player.plex";
-
 
 import { TOOL } from '../tool.js';
 import { HAAPI } from "./connections/ha-api/ha-api.js";
-//import { z } from "zod";
+
+const PLEX_ENTITY_ID_LOOKUP = process.env.HAAPI_PLEX_ENTITY_ID_LOOKUP || "";
+const haapi = new HAAPI();
 
 const name = "plex_watching";
 
@@ -41,7 +41,6 @@ async function plex_watching() {
 
 
 async function getPlexInstances() {
-    const haapi = new HAAPI();
     const response = await haapi.getStates();
     //console.log(response);
     const instances = [];
@@ -62,3 +61,5 @@ tool.setTestFunction(testFunction);
 async function testFunction() {
     console.log(await plex_watching());
 }
+
+if (!haapi.shouldInclude() || PLEX_ENTITY_ID_LOOKUP.length == 0) tool.exclude();

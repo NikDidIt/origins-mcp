@@ -1,10 +1,10 @@
 //Configure Tools for Home Assistant to get information on Home Temprature
-const SENSOR_IN_HOME_TEMP = process.env.HAAPI_SENSOR_IN_HOME_TEMP || "sensor.testsensor2_temperature"
-
 
 import { TOOL } from '../tool.js';
 import { HAAPI } from "./connections/ha-api/ha-api.js";
-//import { z } from "zod";
+
+const SENSOR_IN_HOME_TEMP = process.env.HAAPI_SENSOR_IN_HOME_TEMP || "";
+const haapi = new HAAPI();
 
 const name = "inside_home_temperature";
 
@@ -14,7 +14,7 @@ const params = {};
 
 async function inside_home_temperature() {
     //console.log("---- IN inside_home_temperature FUNCTION ---- ");
-    const haapi = new HAAPI();
+    
     const retObj = { content: []};
     const content = {};
     try {
@@ -41,4 +41,4 @@ async function testFunction() {
     console.log(await inside_home_temperature());
 }
 
-//testFunction();
+if (!haapi.shouldInclude() || SENSOR_IN_HOME_TEMP.length == 0) tool.exclude();

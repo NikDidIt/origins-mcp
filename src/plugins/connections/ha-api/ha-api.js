@@ -9,10 +9,19 @@ export class HAAPI {
 
     _host = null;
     _token = null;
+    _include = true;
 
     constructor(host, token) {
         this._host = host || HAAPI_HOST;
         this._token = token || HAAPI_TOKEN;
+
+        // _host and _token could be wrong, but if they aren't even 
+        // filled in then we know it won't work
+        this._include = (this._host != null && this._token != null);
+    }
+
+    shouldInclude() {
+        return this._include;
     }
 
     async getStatus() {

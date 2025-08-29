@@ -7,6 +7,7 @@ import { TOOL } from '../tool.js';
 import { PIHOLE } from "./connections/pi-hole/pi-hole.js";
 import { z } from "zod";
 
+const pihole = new PIHOLE();
 
 const name = "pihole_find_by_ip";
 
@@ -18,7 +19,6 @@ const params = {
 
 async function pihole_find_by_ip( args ) {
     //console.log("---- IN pihole_find_by_ip FUNCTION ---- ", args);
-    const pihole = new PIHOLE();
     const retObj = { content: []};
     const content = {};
     try {
@@ -63,4 +63,4 @@ async function testFunction() {
     }
 }
 
-//testFunction();
+if (!pihole.shouldInclude()) tool.exclude();

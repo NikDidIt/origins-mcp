@@ -11,6 +11,19 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 
 import { dynamicTools } from './sysgen_tools.js'
 
+//loop through tools to show messaged for included vs excluded tools
+//if excluded the most likely reason if you don't have something set up correctly
+for (const tool in dynamicTools) {
+    if (dynamicTools.hasOwnProperty(tool)) {
+        const t = dynamicTools[tool];
+        if (t.shouldInclude()) {
+            console.log(` + Adding tool for ${t.getName()} to the list.`);
+        } else {
+            console.log(` - Excluding tool for ${t.getName()} to the list.`);
+        }
+    }
+}
+
 
 const app = express();
 app.use(express.json());

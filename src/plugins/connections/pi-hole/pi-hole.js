@@ -11,10 +11,19 @@ export class PIHOLE {
     _host = null;
     _pass = null;
     _token = null;
+    _include = true;
 
     constructor(host, token) {
         this._host = host || PIHOLE_HOST;
         this._pass = token || PIHOLE_PASS;
+
+        // _host and _pass could be wrong, but if they aren't even 
+        // filled in then we know it won't work
+        this._include = (this._host != null && this._pass != null);
+    }
+
+    shouldInclude() {
+        return this._include;
     }
 
     async getToken() {

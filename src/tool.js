@@ -22,6 +22,14 @@ export class TOOL {
         return this._includeInBuild && this._name != null && this._description != null && this._function != null;
     }
 
+    exclude() {
+        this._includeInBuild = false;
+    }
+
+    include() {
+        this._includeInBuild = true;
+    }
+
     getName() {
         return this._name;
     }
