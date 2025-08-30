@@ -34,8 +34,8 @@ export class TAR1090 {
         //console.log(closest);
         const planeInfo = await fetch(PLANE_LOOKUP_URL+closest.hex).then(res => res.json());
         //console.log(planeInfo);
-        if (planeInfo.Manufacture != null) {
-            typeString = " is a "+planeInfo.Manufacture + " " + planeInfo.Type;
+        if (planeInfo.Manufacturer != null) {
+            typeString = " is a "+planeInfo.Manufacturer + " " + planeInfo.Type;
         }
         if (planeInfo.RegisteredOwners != null) {
             operatorString = " operated by "+planeInfo.RegisteredOwners;
