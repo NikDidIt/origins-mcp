@@ -2,7 +2,7 @@
 Collection of stuff around my house that I can pull information from. 
 
 Current connectivity includes
-* Home Assiastant
+* Home Assistant
   * inside_home_temperature.js
   * outside_home_temperature.js
   * plex_watching.js
@@ -39,4 +39,5 @@ Edit your mcp.json file and add
     "origin-api": {
       "url": "http://localhost:3636/origins-mcp"
     }
+
 
